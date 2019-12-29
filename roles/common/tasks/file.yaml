@@ -1,0 +1,10 @@
+- name: Create two hard links
+  file:
+    src: "{{ item.src | default(omit) }}"
+    path: "{{ item.path | mandatory }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('600') }}"
+    state: "{{ item.state | default('file') }}"
+  with_items: "{{ files }}"
+  tags: ['file']

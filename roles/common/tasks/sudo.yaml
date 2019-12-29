@@ -1,0 +1,9 @@
+- name: Set suders' rules
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: "{{ item }}"
+    line: "{{ item }}"
+    validate: visudo -cf %s
+  with_items: "{{ sudo_privileges }}"
+  tags: ['sudo']

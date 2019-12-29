@@ -1,0 +1,13 @@
+- hosts: all
+  roles:
+    - role: common
+      tags: ["common", "general-roles"]
+
+    - role: bertvv.hosts
+      tags: ["bertvv.hosts", "hosts", "general-roles"]
+
+    - role: geerlingguy.swap
+      tags: ["swap"]
+
+    - role: v2ray
+      tags: ["v2ray"]

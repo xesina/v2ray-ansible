@@ -1,0 +1,7 @@
+- name: Manage entries in sysfs.conf
+  lineinfile:
+    dest: "{{ sysfs_config_file | default('/etc/sysfs.conf') }}"
+    state: present
+    line: "{{ item.param }} = {{ item.value }}"
+    regexp: "^{{ item.param | regex_escape() }}"
+  with_items: "{{ sysfs_config }}"

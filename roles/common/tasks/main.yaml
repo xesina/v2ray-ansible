@@ -1,0 +1,31 @@
+- include_tasks: sudo.yaml
+  when: sudo_privileges is defined
+
+- include_tasks: hostname.yaml
+
+- include_tasks: pam-limits.yaml
+  when: pam_limits_config is defined
+
+- include_tasks: modprobe.yaml
+  when: basic_modprobe is defined
+
+- include_tasks: pkgs.yaml
+  when: default_pkgs is defined
+
+- include_tasks: sysctl.yaml
+  when: sysctl_config is defined
+
+- include_tasks: sysfs.yaml
+  when: sysfs_config is defined
+
+- include_tasks: timezone.yaml
+  when: timezone is defined
+
+- include_tasks: file.yaml
+  when: files is defined
+
+- include_tasks: known_hosts.yaml
+  when: known_hosts is defined
+
+- include_tasks: locale.yaml
+  when: locale is defined

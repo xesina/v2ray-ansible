@@ -1,0 +1,5 @@
+---
+- name: Ensure a locale exists
+  locale_gen:
+    name: { { locale } }
+    state: present

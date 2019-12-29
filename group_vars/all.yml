@@ -1,0 +1,113 @@
+# List of basic packages
+default_pkgs:
+  - apt-transport-https
+  - bridge-utils
+  - conntrack
+  - curl
+  - dstat
+  - htop
+  - ifenslave
+  - iftop
+  - iptables
+  - iptables-persistent
+  - iptraf
+  - ncdu
+  - screen
+  - sudo
+  - sysfsutils
+  - sysstat
+  - telnet
+  - tmux
+  - vim
+
+# Sysctl
+sysctl_config:
+  vm.swappiness: 10
+  vm.dirty_ratio: 10
+  vm.dirty_background_ratio: 2
+
+  # max open files
+  fs.file-max: 1024000
+  fs.nr_open: 1024000
+
+  # max read buffer
+  net.core.rmem_max: 67108864
+  # max write buffer
+  net.core.wmem_max: 67108864
+  # default read buffer
+  net.core.rmem_default: 65536
+  # default write buffer
+  net.core.wmem_default: 65536
+  # max processor input queue
+  net.core.netdev_max_backlog: 250000
+  # max backlog
+  net.core.somaxconn: 4096
+  # extras
+  net.core.default_qdisc: "fq"
+
+  # resist SYN flood attacks
+  net.ipv4.tcp_syncookies: 1
+  # reuse timewait sockets when safe
+  net.ipv4.tcp_tw_reuse: 1
+  # turn off fast timewait sockets recycling
+  # net.ipv4.tcp_tw_recycle: 0
+  # short FIN timeout
+  net.ipv4.tcp_fin_timeout: 30
+  # short keepalive time
+  net.ipv4.tcp_keepalive_time: 1200
+  # outbound port range
+  net.ipv4.ip_local_port_range: 10000 65000
+  # max SYN backlog
+  net.ipv4.tcp_max_syn_backlog: 8192
+  # max timewait sockets held by system simultaneously
+  net.ipv4.tcp_max_tw_buckets: 5000
+  # turn on TCP Fast Open on both client and server side
+  net.ipv4.tcp_fastopen: 3
+  # TCP receive buffer
+  net.ipv4.tcp_rmem: 4096 87380 67108864
+  # TCP write buffer
+  net.ipv4.tcp_wmem: 4096 65536 67108864
+  # turn on path MTU discovery
+  net.ipv4.tcp_mtu_probing: 1
+  net.ipv4.tcp_congestion_control: "bbr"
+
+# Kernel params (through sysfsutils)
+sysfs_config:
+  - param: kernel/mm/transparent_hugepage/enabled
+    value: never
+
+timezone: Asia/Tehran
+
+ntp_timezone: "{{ timezone }}"
+ntp_manage_config: true
+ntp_servers:
+  - 3.ir.pool.ntp.org
+  - 1.asia.pool.ntp.org
+  - 3.asia.pool.ntp.org
+
+# List of kernel modules
+basic_modprobe:
+  - bonding
+  - ip_conntrack
+  - nf_conntrack
+
+# PAM Limits
+pam_limits_config:
+  root_hard:
+    domain: root
+    limit_type: hard
+    limit_item: nofile
+    value: 1024000
+  root_soft:
+    domain: root
+    limit_type: soft
+    limit_item: nofile
+    value: 1024000
+
+swap_file_size_mb: "2048"
+swap_file_path: /swapfile
+swap_swappiness: "10"
+swap_file_state: present
+
+v2ray_script_url: https://install.direct/go.sh
+v2ray_config_file_path: "{{ inventory_dir }}/files/v2ray/config.json"

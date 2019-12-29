@@ -1,0 +1,4 @@
+all:
+  hosts:
+    prx:
+      ansible_host: <server-ip>

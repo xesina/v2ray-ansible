@@ -1,0 +1,7 @@
+- name: Modify Linux PAM limits
+  pam_limits:
+    domain: "{{ item.value.domain }}"
+    limit_type: "{{ item.value.limit_type }}"
+    limit_item: "{{ item.value.limit_item }}"
+    value: "{{ item.value.value }}"
+  with_dict: "{{ pam_limits_config }}"

@@ -1,0 +1,22 @@
+- src: https://github.com/GROG/ansible-role-user
+  version: v1.3.0
+  name: GROG.user
+
+- src: https://github.com/geerlingguy/ansible-role-ntp
+  version: 1.6.4
+  name: geerlingguy.ntp
+
+- src: https://github.com/cimon-io/ansible-role-systemd-service
+  version: master
+  name: cimon-io.systemd-service
+
+- src: https://github.com/narcislinux/ansible-role-systemd-service
+  version: master
+  name: narcislinux.systemd-service
+
+- src: https://github.com/bertvv/ansible-role-hosts
+  version: v1.2.0
+  name: bertvv.hosts
+
+- geerlingguy.swap
+

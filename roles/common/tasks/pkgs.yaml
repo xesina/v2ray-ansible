@@ -1,0 +1,6 @@
+- name: Install default packages
+  package:
+    name: "{{ default_pkgs }}"
+    state: present
+    update_cache: yes
+  when: default_pkgs is defined

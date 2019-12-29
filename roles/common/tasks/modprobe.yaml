@@ -1,0 +1,12 @@
+- name: Add kernel modules
+  modprobe:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ basic_modprobe }}"
+
+- name: Enable/ disable kernel modules on boot
+  lineinfile:
+    dest: /etc/modules
+    line: "{{ item if (item is string) else item.module }}"
+    state: "{{ item.state|default(omit) }}"
+  with_items: "{{ basic_modprobe }}"

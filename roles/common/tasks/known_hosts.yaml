@@ -1,0 +1,7 @@
+---
+- name: Adding known hosts
+  known_hosts:
+    path: "/home/{{ app_user }}/.ssh/known_hosts"
+    state: present
+    key: "{{ lookup('pipe', 'ssh-keyscan -t rsa {{ item }}') }}"
+  with_items: "{{ known_hosts }}"
