@@ -109,5 +109,5 @@ swap_file_path: /swapfile
 swap_swappiness: "10"
 swap_file_state: present
 
-v2ray_script_url: https://install.direct/go.sh
+v2ray_script_url: https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
 v2ray_config_file_path: "{{ inventory_dir }}/files/v2ray/config.json"
