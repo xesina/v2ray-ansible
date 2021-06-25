@@ -2,4 +2,6 @@
 .ansible
 site.retry
 inventory/files/v2ray/config.json
+inventory.yaml
+config.json
 
