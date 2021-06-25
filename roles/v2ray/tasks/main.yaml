@@ -34,7 +34,7 @@
 - name: sync v2ray config
   synchronize:
     src: "{{ v2ray_config_file_path }}"
-    dest: /etc/v2ray/
+    dest: /usr/local/etc/v2ray/
   when: v2ray_config.stat.exists
   notify:
     - configtest
@@ -53,7 +53,7 @@
     - v2ray_config
 
 - name: configtest
-  command: /usr/bin/v2ray/v2ray -test -config=/etc/v2ray/config.json
+  command: /usr/local/bin/v2ray -test -config=/usr/local/etc/v2ray/config.json
   register: v2ray_configtest_result
 
 - name: restart
