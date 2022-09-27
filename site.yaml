@@ -11,9 +11,3 @@
 
     - role: v2ray
       tags: ["v2ray"]
-      
-    - role: geerlingguy.docker
-
-    - role: gantsign.oh-my-zsh
-      users:
-        - username: root

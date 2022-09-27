@@ -53,7 +53,7 @@
     - v2ray_config
 
 - name: configtest
-  command: /usr/local/bin/v2ray -test -config=/usr/local/etc/v2ray/config.json
+  command: /usr/local/bin/v2ray test -c /usr/local/etc/v2ray/config.json
   register: v2ray_configtest_result
 
 - name: restart
